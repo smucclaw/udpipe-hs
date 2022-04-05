@@ -27,3 +27,4 @@ someFunc = do
       putStrLn ans
       putStrLn "someFunc"
 
+-- TODO: Handle errors in the C++ code (give back error message)
