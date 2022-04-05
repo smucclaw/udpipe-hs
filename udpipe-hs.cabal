@@ -1,0 +1,133 @@
+cabal-version: 2.2
+
+-- This file has been generated from package.yaml by hpack version 0.34.6.
+--
+-- see: https://github.com/sol/hpack
+
+name:           udpipe-hs
+version:        0.1.0.0
+author:         Andreas Källberg
+maintainer:     anka.213@gmail.com
+build-type:     Simple
+extra-source-files:
+    CHANGELOG.md
+
+library
+  exposed-modules:
+      MyLib
+  other-modules:
+      Paths_udpipe_hs
+  autogen-modules:
+      Paths_udpipe_hs
+  hs-source-dirs:
+      src
+  cxx-options: -std=c++17
+  include-dirs:
+      udpipe/src
+  cxx-sources:
+      udpipe/src/capi.cpp
+      udpipe/src/model/evaluator.cpp
+      udpipe/src/model/model.cpp
+      udpipe/src/model/model_morphodita_parsito.cpp
+      udpipe/src/model/pipeline.cpp
+      udpipe/src/morphodita/derivator/derivation_formatter.cpp
+      udpipe/src/morphodita/derivator/derivator_dictionary.cpp
+      udpipe/src/morphodita/derivator/derivator_dictionary_encoder.cpp
+      udpipe/src/morphodita/morpho/czech_morpho.cpp
+      udpipe/src/morphodita/morpho/czech_morpho_encoder.cpp
+      udpipe/src/morphodita/morpho/english_morpho.cpp
+      udpipe/src/morphodita/morpho/english_morpho_encoder.cpp
+      udpipe/src/morphodita/morpho/english_morpho_guesser.cpp
+      udpipe/src/morphodita/morpho/english_morpho_guesser_encoder.cpp
+      udpipe/src/morphodita/morpho/external_morpho.cpp
+      udpipe/src/morphodita/morpho/external_morpho_encoder.cpp
+      udpipe/src/morphodita/morpho/generic_morpho.cpp
+      udpipe/src/morphodita/morpho/generic_morpho_encoder.cpp
+      udpipe/src/morphodita/morpho/morpho.cpp
+      udpipe/src/morphodita/morpho/morpho_prefix_guesser_encoder.cpp
+      udpipe/src/morphodita/morpho/morpho_statistical_guesser.cpp
+      udpipe/src/morphodita/morpho/morpho_statistical_guesser_encoder.cpp
+      udpipe/src/morphodita/morpho/morpho_statistical_guesser_trainer.cpp
+      udpipe/src/morphodita/morpho/raw_morpho_dictionary_reader.cpp
+      udpipe/src/morphodita/morpho/tag_filter.cpp
+      udpipe/src/morphodita/tagger/tagger.cpp
+      udpipe/src/morphodita/tagset_converter/identity_tagset_converter.cpp
+      udpipe/src/morphodita/tagset_converter/pdt_to_conll2009_tagset_converter.cpp
+      udpipe/src/morphodita/tagset_converter/strip_lemma_comment_tagset_converter.cpp
+      udpipe/src/morphodita/tagset_converter/strip_lemma_id_tagset_converter.cpp
+      udpipe/src/morphodita/tagset_converter/tagset_converter.cpp
+      udpipe/src/morphodita/tokenizer/czech_tokenizer.cpp
+      udpipe/src/morphodita/tokenizer/czech_tokenizer_factory.cpp
+      udpipe/src/morphodita/tokenizer/czech_tokenizer_factory_encoder.cpp
+      udpipe/src/morphodita/tokenizer/english_tokenizer.cpp
+      udpipe/src/morphodita/tokenizer/generic_tokenizer.cpp
+      udpipe/src/morphodita/tokenizer/generic_tokenizer_factory.cpp
+      udpipe/src/morphodita/tokenizer/generic_tokenizer_factory_encoder.cpp
+      udpipe/src/morphodita/tokenizer/gru_tokenizer.cpp
+      udpipe/src/morphodita/tokenizer/gru_tokenizer_factory.cpp
+      udpipe/src/morphodita/tokenizer/gru_tokenizer_network.cpp
+      udpipe/src/morphodita/tokenizer/gru_tokenizer_trainer.cpp
+      udpipe/src/morphodita/tokenizer/ragel_tokenizer.cpp
+      udpipe/src/morphodita/tokenizer/tokenizer.cpp
+      udpipe/src/morphodita/tokenizer/tokenizer_factory.cpp
+      udpipe/src/morphodita/tokenizer/unicode_tokenizer.cpp
+      udpipe/src/morphodita/tokenizer/vertical_tokenizer.cpp
+      udpipe/src/morphodita/version/version.cpp
+      udpipe/src/parsito/configuration/configuration.cpp
+      udpipe/src/parsito/configuration/node_extractor.cpp
+      udpipe/src/parsito/configuration/value_extractor.cpp
+      udpipe/src/parsito/embedding/embedding.cpp
+      udpipe/src/parsito/embedding/embedding_encode.cpp
+      udpipe/src/parsito/network/neural_network.cpp
+      udpipe/src/parsito/network/neural_network_trainer.cpp
+      udpipe/src/parsito/parser/parser.cpp
+      udpipe/src/parsito/parser/parser_nn.cpp
+      udpipe/src/parsito/parser/parser_nn_trainer.cpp
+      udpipe/src/parsito/transition/transition.cpp
+      udpipe/src/parsito/transition/transition_system.cpp
+      udpipe/src/parsito/transition/transition_system_link2.cpp
+      udpipe/src/parsito/transition/transition_system_projective.cpp
+      udpipe/src/parsito/transition/transition_system_swap.cpp
+      udpipe/src/parsito/tree/tree.cpp
+      udpipe/src/parsito/tree/tree_format.cpp
+      udpipe/src/parsito/tree/tree_format_conllu.cpp
+      udpipe/src/parsito/version/version.cpp
+      udpipe/src/sentence/input_format.cpp
+      udpipe/src/sentence/output_format.cpp
+      udpipe/src/sentence/sentence.cpp
+      udpipe/src/sentence/token.cpp
+      udpipe/src/tokenizer/detokenizer.cpp
+      udpipe/src/tokenizer/morphodita_tokenizer_wrapper.cpp
+      udpipe/src/tokenizer/multiword_splitter.cpp
+      udpipe/src/tokenizer/multiword_splitter_trainer.cpp
+      udpipe/src/trainer/trainer.cpp
+      udpipe/src/trainer/trainer_morphodita_parsito.cpp
+      udpipe/src/trainer/training_failure.cpp
+      udpipe/src/unilib/unicode.cpp
+      udpipe/src/unilib/uninorms.cpp
+      udpipe/src/unilib/unistrip.cpp
+      udpipe/src/unilib/utf16.cpp
+      udpipe/src/unilib/utf8.cpp
+      udpipe/src/unilib/version.cpp
+      udpipe/src/utils/compressor_load.cpp
+      udpipe/src/utils/compressor_save.cpp
+      udpipe/src/utils/options.cpp
+      udpipe/src/utils/url_detector.cpp
+      udpipe/src/version/version.cpp
+  build-depends:
+      base >=4.14.3.0 && <4.15
+  if os(darwin)
+    extra-libraries:
+        c++
+  default-language: Haskell2010
+
+executable udpipe-hs
+  main-is: Main.hs
+  other-modules:
+      Paths_udpipe_hs
+  autogen-modules:
+      Paths_udpipe_hs
+  build-depends:
+      base >=4.14.3.0 && <4.15
+    , udpipe-hs
+  default-language: Haskell2010

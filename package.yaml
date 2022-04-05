@@ -1,0 +1,44 @@
+
+# cabal-version:      2.4
+name:               udpipe-hs
+version:            0.1.0.0
+author:             Andreas Källberg
+maintainer:         anka.213@gmail.com
+extra-source-files: CHANGELOG.md
+
+# synopsis: A modern format for Haskell packages
+# description: See README at <https://github.com/sol/hpack#readme>
+# github: sol/hpack
+# category: Development
+
+dependencies:    
+- base ^>=4.14.3.0
+
+library:
+    exposed-modules:  MyLib
+    source-dirs:   src
+    cxx-sources: 
+    - udpipe/src/capi.cpp 
+    # - udpipe/src/*/*.cpp
+    - udpipe/src/model/**/*.cpp
+    - udpipe/src/morphodita/**/*.cpp
+    - udpipe/src/parsito/**/*.cpp
+    # - udpipe/src/rest_server/**/*.cpp
+    - udpipe/src/sentence/**/*.cpp
+    - udpipe/src/tokenizer/**/*.cpp
+    - udpipe/src/trainer/**/*.cpp
+    - udpipe/src/unilib/**/*.cpp
+    - udpipe/src/utils/**/*.cpp
+    - udpipe/src/version/**/*.cpp
+
+
+    include-dirs: udpipe/src
+    cxx-options: -std=c++17
+    when:
+    - condition: os(darwin)
+      extra-libraries: c++
+
+executable:
+    main:           Main.hs
+    dependencies:     
+    - udpipe-hs

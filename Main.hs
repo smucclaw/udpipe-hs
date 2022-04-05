@@ -1,0 +1,2 @@
+import MyLib
+main = someFunc
