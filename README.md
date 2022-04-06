@@ -31,3 +31,5 @@ will produce this output
 ```
 
 assuming you have downloaded `english-lines-ud-2.5-191206.udpipe` and put it in the `models` directory.
+
+You can download models here: https://ufal.mff.cuni.cz/udpipe/1/models
