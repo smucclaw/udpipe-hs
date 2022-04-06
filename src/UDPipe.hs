@@ -17,7 +17,7 @@ Example usage:
 
 
 -}
-module MyLib (runExample, runPipeline, loadModel, ModelPtr) where
+module UDPipe (runExample, runPipeline, loadModel, ModelPtr) where
 import Foreign
 import Foreign.C
 

@@ -1,2 +1,2 @@
-import MyLib
+import UDPipe ( runExample )
 main = runExample

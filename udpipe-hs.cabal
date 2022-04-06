@@ -16,6 +16,7 @@ library
   exposed-modules:
       MyLib
   other-modules:
+      UDPipe
       Paths_udpipe_hs
   autogen-modules:
       Paths_udpipe_hs
