@@ -1,2 +1,2 @@
 import MyLib
-main = someFunc
+main = runExample
