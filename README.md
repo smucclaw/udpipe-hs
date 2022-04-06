@@ -3,6 +3,8 @@ Basic haskell bindings for [udpipe](https://github.com/ufal/udpipe)
 
 ## Example
 
+This code
+
 ```haskell
 runExample = do
     let modelName = "models/english-lines-ud-2.5-191206.udpipe"
@@ -15,7 +17,7 @@ runExample = do
         putStrLn ans
 ```
 
-output
+will produce this output
 
 ```
 # newdoc
@@ -27,3 +29,5 @@ output
 3       an      an      DET     IND-SG  Definite=Ind|PronType=Art       4       det     _       _
 4       example example NOUN    SG-NOM  Number=Sing     0       root    _       SpacesAfter=\n
 ```
+
+assuming you have downloaded `english-lines-ud-2.5-191206.udpipe` and put it in the `models` directory.
