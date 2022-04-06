@@ -1,0 +1,3 @@
+[submodule "udpipe"]
+	path = udpipe
+	url = ./udpipe
