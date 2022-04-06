@@ -15,7 +15,7 @@ dependencies:
 - base ^>=4.14.3.0
 
 library:
-    exposed-modules:  MyLib
+    exposed-modules:  UDPipe
     source-dirs:   src
     cxx-sources: 
     - udpipe/src/capi.cpp 
