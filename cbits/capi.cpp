@@ -24,6 +24,7 @@ model* load_model(char* filename) {
 }
 
 void free_model(model* m) {
+  std::cerr << "Releasing model" << std::endl;
   delete m;
 }
 
