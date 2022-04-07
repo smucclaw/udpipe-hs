@@ -13,9 +13,16 @@ model* load_model(char* filename) ;
 void free_model(model* m) ;
 
 bool run_pipeline(model* m, const string& input_type, const string& tagger, const string& parser, const string& output_type, 
-                    std::istream& input_stream, std::ostream& output_stream) ;
+                    std::istream& input_stream, std::ostream& output_stream, string& error) ;
 
-const char* run_pipeline_simple(model* m, char* input) ;
+// struct err_pair {
+//   char* error;
+//   bool success;
+// };
+
+const char* run_pipeline_simple(model* m, char* input, bool* result) ;
+
+// const char* run_pipeline_simple(model* m, char* input) ;
 
 void free_cstr(char* cstr);
 

@@ -19,9 +19,10 @@ Example usage:
 -}
 module UDPipe (runExample, runPipeline, loadModel, Model) where
 import Foreign
-    ( Ptr, FunPtr, nullPtr, newForeignPtr, withForeignPtr, ForeignPtr )
-import Foreign.C ( peekCString, withCString, CString )
+    ( Ptr, FunPtr, nullPtr, newForeignPtr, withForeignPtr, ForeignPtr, Storable (peek) )
+import Foreign.C ( peekCString, withCString, CString, CBool )
 import Control.Exception (bracket, mask_)
+import Foreign.Marshal.Alloc (alloca)
 
 -- | A loaded udpipe model.
 newtype Model = Model (ForeignPtr ModelRep)
@@ -34,7 +35,7 @@ foreign import ccall unsafe "load_model" cLoadModel
   :: CString -> IO ModelPtr
 
 foreign import ccall unsafe "run_pipeline_simple" cRunPipeline
-  :: ModelPtr -> CString -> IO CString
+  :: ModelPtr -> CString -> Ptr CBool -> IO CString
 
 foreign import ccall unsafe "free_cstr" freeCString
   :: CString -> IO ()
@@ -43,11 +44,15 @@ foreign import ccall unsafe "&free_model" freeModel
   :: FunPtr (ModelPtr -> IO ())
 
 -- | Run the default ud pipeline on an input string.
-runPipeline :: Model -> String -> IO String
+runPipeline :: Model -> String -> IO (Either String String)
 runPipeline (Model fmodel) input = do
   withCString input $ \cInput ->
-    withForeignPtr fmodel $ \model ->
-      bracket (cRunPipeline model cInput) freeCString peekCString
+    alloca $ \successPtr ->
+      withForeignPtr fmodel $ \model ->
+        bracket (cRunPipeline model cInput successPtr) freeCString $ \ x -> do
+          success <- peek successPtr
+          str <- peekCString x
+          return $ if success == 1 then Right str else Left str
 
 -- | Load a model from a file.
 loadModel :: FilePath -> IO (Either String Model)
@@ -72,7 +77,7 @@ runExample = do
       Right mod -> do
         let input = "This is an example"
         ans <- runPipeline mod input
-        putStrLn ans
+        putStrLn $ either ("Error running pipeline: "++) id ans
 
 {- TODO: 
  - * Handle errors in the C++ code (give back error message)
