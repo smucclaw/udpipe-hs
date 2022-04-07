@@ -20,6 +20,7 @@ Example usage:
 module UDPipe (runExample, runPipeline, loadModel, ModelPtr) where
 import Foreign
 import Foreign.C
+import Control.Exception (bracket)
 
 -- | A loaded udpipe model.
 type ModelPtr = Ptr Model
@@ -39,10 +40,7 @@ foreign import ccall unsafe "free_cstr" freeCString
 runPipeline :: ModelPtr -> String -> IO String
 runPipeline model input = do
   withCString input $ \cInput -> do
-    cOutput <- cRunPipeline model cInput
-    output <- peekCString cOutput
-    freeCString cOutput
-    return output
+    bracket (cRunPipeline model cInput) freeCString peekCString
 
 -- | Load a model from a file.
 loadModel :: FilePath -> IO (Either String ModelPtr)
