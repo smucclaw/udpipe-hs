@@ -25,7 +25,7 @@ library
   include-dirs:
       udpipe/src
   cxx-sources:
-      udpipe/src/capi.cpp
+      cbits/capi.cpp
       udpipe/src/model/evaluator.cpp
       udpipe/src/model/model.cpp
       udpipe/src/model/model_morphodita_parsito.cpp

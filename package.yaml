@@ -18,7 +18,7 @@ library:
     exposed-modules:  UDPipe
     source-dirs:   src
     cxx-sources: 
-    - udpipe/src/capi.cpp 
+    - cbits/capi.cpp 
     # - udpipe/src/*/*.cpp
     - udpipe/src/model/**/*.cpp
     - udpipe/src/morphodita/**/*.cpp

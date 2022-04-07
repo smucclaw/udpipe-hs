@@ -65,4 +65,10 @@ runExample = do
         ans <- runPipeline mod input
         putStrLn ans
 
--- TODO: Handle errors in the C++ code (give back error message)
+{- TODO: 
+ - * Handle errors in the C++ code (give back error message)
+ - * Automatically free unused models using ForeignPtr
+ - * Move the custom C++ code out of the submodule so we 
+     don't need a fork of upstream udpipe
+     (We would need to manually exclude the broken C++ file for that)
+-} 
