@@ -32,7 +32,6 @@ library
       udpipe/src/model/pipeline.cpp
       udpipe/src/morphodita/derivator/derivation_formatter.cpp
       udpipe/src/morphodita/derivator/derivator_dictionary.cpp
-      udpipe/src/morphodita/derivator/derivator_dictionary_encoder.cpp
       udpipe/src/morphodita/morpho/czech_morpho.cpp
       udpipe/src/morphodita/morpho/czech_morpho_encoder.cpp
       udpipe/src/morphodita/morpho/english_morpho.cpp

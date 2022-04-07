@@ -19,10 +19,20 @@ library:
     source-dirs:   src
     cxx-sources: 
     - cbits/capi.cpp 
-    # - udpipe/src/*/*.cpp
     - udpipe/src/model/**/*.cpp
-    - udpipe/src/morphodita/**/*.cpp
+    # We can't include everything, since some files are broken
+    # - udpipe/src/morphodita/**/*.cpp
+    - udpipe/src/morphodita/derivator/derivation_formatter.cpp
+    - udpipe/src/morphodita/derivator/derivator_dictionary.cpp
+    # Broken and not in the original include file
+    # - udpipe/src/morphodita/derivator/derivator_dictionary_encoder.cpp
+    - udpipe/src/morphodita/morpho/*.cpp
+    - udpipe/src/morphodita/tagger/*.cpp
+    - udpipe/src/morphodita/tagset_converter/*.cpp
+    - udpipe/src/morphodita/tokenizer/*.cpp
+    - udpipe/src/morphodita/version/*.cpp
     - udpipe/src/parsito/**/*.cpp
+    # We don't need the rest server
     # - udpipe/src/rest_server/**/*.cpp
     - udpipe/src/sentence/**/*.cpp
     - udpipe/src/tokenizer/**/*.cpp
