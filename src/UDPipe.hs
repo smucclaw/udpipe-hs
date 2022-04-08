@@ -44,6 +44,9 @@ foreign import ccall unsafe "free_cstr" freeCString
 foreign import ccall unsafe "&free_model" freeModel
   :: FunPtr (ModelPtr -> IO ())
 
+cBoolToBool :: CBool -> Bool
+cBoolToBool = toEnum . fromEnum
+
 -- | Run the default ud pipeline on an input string.
 runPipeline :: Model -> String -> IO (Either String String)
 runPipeline (Model fmodel) input = do
@@ -53,7 +56,7 @@ runPipeline (Model fmodel) input = do
         bracket (cRunPipeline model cInput successPtr) freeCString $ \ x -> do
           success <- peek successPtr
           str <- peekCString x
-          return $ if success == 1 then Right str else Left str
+          return $ if cBoolToBool success then Right str else Left str
 
 -- | Load a model from a file.
 loadModel :: FilePath -> IO (Either String Model)
