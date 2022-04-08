@@ -44,9 +44,10 @@ library:
 
     include-dirs: udpipe/src
     cxx-options: -std=c++17
-    when:
-    - condition: os(darwin)
-      extra-libraries: c++
+    extra-libraries: stdc++
+    # when:
+    # - condition: os(darwin)
+    #   extra-libraries: c++
 
 executable:
     main:           Main.hs
