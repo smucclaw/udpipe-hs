@@ -26,6 +26,7 @@ import Foreign.Marshal.Alloc (alloca)
 
 -- | A loaded udpipe model.
 newtype Model = Model (ForeignPtr ModelRep)
+  deriving (Show, Eq, Ord)
 
 type ModelPtr = Ptr ModelRep
 
